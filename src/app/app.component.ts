@@ -1,18 +1,15 @@
 import { Component } from '@angular/core';
-
-import { ApiService } from './shared';
-
-import '../style/app.scss';
+import counter from './store/counter';
 
 @Component({
   selector: 'my-app', // <my-app></my-app>
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  template: `
+    <router-outlet></router-outlet>
+    <button (click)="counter.increment()">Increment</button>
+    <button (click)="counter.decrement()">Decrement</button>
+  `,
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  url = 'https://github.com/preboot/angular2-webpack';
-
-  constructor(private api: ApiService) {
-    // Do something with api
-  }
+  counter = counter;
 }
